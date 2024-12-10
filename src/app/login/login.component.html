@@ -4,10 +4,10 @@
       <div class="card-body login-card-body">
           <p class="login-box-msg">Sign in to start your session</p>
           <!-- <form action="../index3.html" method="post"> tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt-->
-              <div class="input-group mb-3"> <input type="email" class="form-control" placeholder="Email">
+              <div class="input-group mb-3"> <input type="text" class="form-control" placeholder="User Id" id="IdText">
                   <div class="input-group-text"> <span class="bi bi-envelope"></span> </div>
               </div>
-              <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password">
+              <div class="input-group mb-3"> <input type="password" class="form-control" placeholder="Password" id="PasswordText">
                   <div class="input-group-text"> <span class="bi bi-lock-fill"></span> </div>
               </div> <!--begin::Row-->
               <div class="row">
@@ -17,7 +17,7 @@
                           </label> </div>
                   </div> <!-- /.col -->
                   <div class="col-4">
-                      <div class="d-grid gap-2"> <button class="btn btn-primary" [routerLink]="['/admin']" routerLinkActive="router-link-active">Sign In</button> </div> <!-- tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
+                      <div class="d-grid gap-2"> <button class="btn btn-primary" (click)="signIn()">Sign In</button> </div> <!-- tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt -->
                   </div> <!-- /.col -->
               </div> <!--end::Row-->
           <div class="social-auth-links text-center mb-3 d-grid gap-2">
@@ -31,6 +31,35 @@
               </a> </p>
       </div> <!-- /.login-card-body -->
   </div>
+
+  <div class="modal" id="peringatanModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-warning">
+          <h5 class="modal-title">
+            <i class="fa fa-plus"></i>
+            Peringatan
+          </h5>
+          <button class="close" data-dismiss="modal">
+            <span aria-hidden="true">$times;</span>
+          </button>
+        </div> <!-- /.modal-header -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 col-lg-12 col-xs-12">
+              <span id="pm_message"></span>
+            </div>
+          </div>
+        </div> <!-- /.modal-body -->
+        <div class="modal-footer">
+          <button class="btn btn-warning" data-dismiss="modal">
+            <i class="fa fa-check"></i>
+            ok
+          </button>
+        </div> <!-- /.modal-footer -->
+      </div> <!-- /.modal-content -->
+    </div> <!-- /.modal-dialog -->
+  </div> <!-- /.modal -->
 </div> <!-- /.login-box --> <!--begin::Third Party Plugin(OverlayScrollbars)-->
 <script src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.3.0/browser/overlayscrollbars.browser.es6.min.js" integrity="sha256-H2VM7BKda+v2Z4+DRy69uknwxjyDRhszjXFhsL4gD3w=" crossorigin="anonymous"></script> <!--end::Third Party Plugin(OverlayScrollbars)--><!--begin::Required Plugin(popperjs for Bootstrap 5)-->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script> <!--end::Required Plugin(popperjs for Bootstrap 5)--><!--begin::Required Plugin(Bootstrap 5)-->
