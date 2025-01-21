@@ -27,7 +27,7 @@ export class ForexComponent implements AfterViewInit {
     this._table1 = $("#table1").DataTable({
       "columnDefs" : [
         {
-          "targets" : 2,
+          "targets" : 3,
           "className" : "text-right"
         }
       ]
@@ -40,23 +40,27 @@ export class ForexComponent implements AfterViewInit {
     console.log("getData()");
 
     var url = "https://openexchangerates.org/api/latest.json?app_id=0c1302314b7d46e2bdd1bcb872195a62";
+    const currenciesUrl = "https://openexchangerates.org/api/currencies.json";
 
-    this.httpClient.get(url).subscribe((data: any) => {
-      var rates = data.rates;
-      console.log(rates);
+    this.httpClient.get(currenciesUrl).subscribe((currencies: any) => {
+      this.httpClient.get(url).subscribe((data: any) => {
+        var rates = data.rates;
+        console.log(rates);
 
-      let index = 1;
+        let index = 1;
 
-      for (const currency in rates) {
-        const rate = rates.IDR / rates[currency];
-        const formatrate = formatCurrency(rate, "en-US", "", currency);
-        console.log('${currency} : ${formatrate}');
+        for (const currency in rates) {
+          const currencyName = currencies[currency];
+          const rate = rates.IDR / rates[currency];
+          const formatrate = formatCurrency(rate, "en-US", "", currency);
+          console.log('${currency} : ${currencyName} - ${formatrate}');
 
-        const row = [index++, currency, formatrate];
-        this._table1.row.add(row);
-      }
-      this._table1.draw(false);
+          const row = [index++, currency, currencyName, formatrate];
+          this._table1.row.add(row);
+          this._table1.draw(false);
+        }
 
+      });
     });
   }
 
